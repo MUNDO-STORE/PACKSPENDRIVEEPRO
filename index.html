@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mundo Store Packs | Atualize seu Pendrive DJ</title>
+    <title id="page-title">Mundo Store Packs | Atualize seu Pendrive DJ</title>
     <meta name="description" content="Packs completos para DJs atualizarem seus pendrives com milhares de músicas, efeitos sonoros e softwares profissionais.">
     
     <!-- Pixel do Facebook -->
@@ -93,6 +93,29 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
+        /* Bandeira de idioma */
+        .idioma-flag {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .idioma-flag img {
+            width: 20px;
+            height: 15px;
+            border-radius: 2px;
+        }
+        
         /* Cards de produtos */
         .cards-container {
             display: flex;
@@ -173,7 +196,7 @@
         /* IMAGENS DOS CARDS OTIMIZADAS */
         .card-image-container {
             width: 100%;
-            height: 180px; /* Altura reduzida */
+            height: 180px;
             position: relative;
             overflow: hidden;
             background: linear-gradient(45deg, #2a2a4a, #1a1a2e);
@@ -185,8 +208,8 @@
         .card-image {
             width: 100%;
             height: 100%;
-            object-fit: contain; /* Mantém a imagem completa sem cortar */
-            padding: 15px; /* Espaço ao redor da imagem */
+            object-fit: contain;
+            padding: 15px;
             transition: var(--transition);
         }
         
@@ -477,7 +500,7 @@
             }
             
             .card-image-container {
-                height: 160px; /* Altura ainda menor em mobile */
+                height: 160px;
             }
             
             .floating-casino {
@@ -507,6 +530,13 @@
             .logo {
                 font-size: 2.2rem;
             }
+            
+            .idioma-flag {
+                top: 10px;
+                right: 10px;
+                font-size: 0.7rem;
+                padding: 6px 10px;
+            }
         }
         
         @media (max-width: 480px) {
@@ -523,7 +553,7 @@
             }
             
             .card-image-container {
-                height: 140px; /* Altura mínima para mobile */
+                height: 140px;
             }
             
             .notification-container {
@@ -596,11 +626,17 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Bandeira de idioma -->
+    <div class="idioma-flag" id="idioma-flag" style="display: none;">
+        <img id="country-flag" src="" alt="Bandeira">
+        <span id="idioma-text">Português</span>
+    </div>
+    
     <div class="container">
         <!-- Header -->
         <header>
-            <h1 class="logo fade-in">MUNDO STORE PACKS</h1>
-            <p class="slogan fade-in delay-1">Atualize seu pendrive DJ com milhares de músicas, efeitos sonoros e softwares profissionais</p>
+            <h1 class="logo fade-in" id="main-title">MUNDO STORE PACKS</h1>
+            <p class="slogan fade-in delay-1" id="main-slogan">Atualize seu pendrive DJ com milhares de músicas, efeitos sonoros e softwares profissionais</p>
             <div class="localizacao fade-in delay-2" id="localizacao-usuario">
                 📍 Detectando sua localização...
             </div>
@@ -611,20 +647,20 @@
             <!-- Card 1: Pack Plus -->
             <div class="card fade-in">
                 <div class="card-header">
-                    <h2 class="card-title">PACK PLUS ATUALIZAR PENDRIVE</h2>
+                    <h2 class="card-title" id="card1-title">PACK PLUS ATUALIZAR PENDRIVE</h2>
                     <div class="card-price">R$10<span>,00</span></div>
                 </div>
                 <div class="card-image-container" id="card1-image">
                     <div class="image-placeholder" id="card1-placeholder">
                         <i class="fas fa-usb-drive"></i>
                         <div>PACK PLUS</div>
-                        <div>Atualizar Pendrive</div>
+                        <div id="card1-placeholder-text">Atualizar Pendrive</div>
                     </div>
                     <!-- Imagem será carregada via JavaScript -->
                     <div class="image-overlay"></div>
                 </div>
                 <div class="card-body">
-                    <ul class="card-features">
+                    <ul class="card-features" id="card1-features">
                         <li>Mais de 25 mil músicas MP3</li>
                         <li>+30 ritmos atualizados</li>
                         <li>Sem vinhetas</li>
@@ -634,7 +670,7 @@
                         <li class="sem-atualizacoes">SEM ATUALIZAÇÕES!</li>
                     </ul>
                     <a href="https://mundodj.erby.site/product/17664857381252879140183941562567" class="btn-comprar" target="_blank" id="btn-pack-plus">
-                        <i class="fas fa-shopping-cart"></i> CLIQUE AQUI PARA COMPRAR R$ 10,00
+                        <i class="fas fa-shopping-cart"></i> <span id="btn-pack-plus-text">CLIQUE AQUI PARA COMPRAR R$ 10,00</span>
                     </a>
                 </div>
             </div>
@@ -642,20 +678,20 @@
             <!-- Card 2: Super DJ Profissional 2026 -->
             <div class="card fade-in delay-1">
                 <div class="card-header">
-                    <h2 class="card-title">SUPER DJ PROFISSIONAL 2026</h2>
+                    <h2 class="card-title" id="card2-title">SUPER DJ PROFISSIONAL 2026</h2>
                     <div class="card-price">R$19<span>,90</span></div>
                 </div>
                 <div class="card-image-container" id="card2-image">
                     <div class="image-placeholder" id="card2-placeholder">
                         <i class="fas fa-headphones"></i>
                         <div>SUPER DJ</div>
-                        <div>Profissional 2026</div>
+                        <div id="card2-placeholder-text">Profissional 2026</div>
                     </div>
                     <!-- Imagem será carregada via JavaScript -->
                     <div class="image-overlay"></div>
                 </div>
                 <div class="card-body">
-                    <ul class="card-features">
+                    <ul class="card-features" id="card2-features">
                         <li>+7 Terabytes de músicas</li>
                         <li>+2 Terabytes de efeitos sonoros</li>
                         <li>Repertórios atualizados</li>
@@ -669,7 +705,7 @@
                         <li>✅ ATUALIZAÇÕES (TUDO QUE CONSEGUIMOS JOGAMOS NOS GRUPO VIP TELEGRAM)!</li>
                     </ul>
                     <a href="https://mundodj.erby.site/product/176872068048692372646328323697" class="btn-comprar" target="_blank" id="btn-super-dj">
-                        <i class="fas fa-shopping-cart"></i> CLIQUE AQUI PARA COMPRAR R$ 19,90
+                        <i class="fas fa-shopping-cart"></i> <span id="btn-super-dj-text">CLIQUE AQUI PARA COMPRAR R$ 19,90</span>
                     </a>
                 </div>
             </div>
@@ -677,15 +713,15 @@
         
         <!-- Depoimentos -->
         <section class="depoimentos-container fade-in delay-2">
-            <h2 class="section-title">DEPOIMENTOS DE CLIENTES</h2>
-            <div class="depoimentos-slider">
+            <h2 class="section-title" id="depoimentos-title">DEPOIMENTOS DE CLIENTES</h2>
+            <div class="depoimentos-slider" id="depoimentos-slider">
                 <!-- Depoimentos serão inseridos via JavaScript -->
             </div>
         </section>
         
         <!-- Footer -->
         <footer class="fade-in">
-            <p>© <span id="current-year">2026</span> Mundo Store Packs. Todos os direitos reservados.</p>
+            <p>© <span id="current-year">2026</span> <span id="footer-text">Mundo Store Packs. Todos os direitos reservados.</span></p>
         </footer>
     </div>
     
@@ -704,7 +740,7 @@
     <!-- Botão flutuante Cassino -->
     <div class="floating-casino" id="floating-casino">
         <a href="https://bkbet84.com/?id=972228965" class="casino-btn" target="_blank" id="casino-btn">
-            <i class="fas fa-coins"></i> CASSINO PAGANDO TIGRINHO CLICK AQUI!
+            <i class="fas fa-coins"></i> <span id="casino-btn-text">CASSINO PAGANDO TIGRINHO CLICK AQUI!</span>
         </a>
     </div>
     
@@ -717,15 +753,276 @@
         // ================== ANO ATUAL AUTOMÁTICO ==================
         document.getElementById('current-year').textContent = new Date().getFullYear();
         
+        // ================== DADOS PARA TRADUÇÃO ==================
+        const traducoes = {
+            // Português (Brasil) - Padrão
+            'pt-BR': {
+                pageTitle: 'Mundo Store Packs | Atualize seu Pendrive DJ',
+                mainTitle: 'MUNDO STORE PACKS',
+                mainSlogan: 'Atualize seu pendrive DJ com milhares de músicas, efeitos sonoros e softwares profissionais',
+                card1Title: 'PACK PLUS ATUALIZAR PENDRIVE',
+                card1Features: [
+                    'Mais de 25 mil músicas MP3',
+                    '+30 ritmos atualizados',
+                    'Sem vinhetas',
+                    'Download imediato (Hospedado Media Fire e Google Drive)',
+                    'Links enviados por email após pagamento',
+                    '+10 MIL MÚSICAS EXTRAS!',
+                    'SEM ATUALIZAÇÕES!'
+                ],
+                card1Placeholder: 'Atualizar Pendrive',
+                btnPackPlus: 'CLIQUE AQUI PARA COMPRAR R$ 10,00',
+                card2Title: 'SUPER DJ PROFISSIONAL 2026',
+                card2Features: [
+                    '+7 Terabytes de músicas',
+                    '+2 Terabytes de efeitos sonoros',
+                    'Repertórios atualizados',
+                    'Videoclipes e softwares para DJ',
+                    'Packs para academia',
+                    'Pack Gospel Profissional',
+                    'Pack DJ Retro (Discotecas, Flashback, Eurodance, etc)',
+                    'Pack Funk (Light, Megafunk, Eletrofunk, etc)',
+                    'Pack para festas (Casamento, 15 anos, Formaturas, etc)',
+                    '✅ 100% HOSPEDADO NO TELEGRAM!',
+                    '✅ ATUALIZAÇÕES (TUDO QUE CONSEGUIMOS JOGAMOS NOS GRUPO VIP TELEGRAM)!'
+                ],
+                card2Placeholder: 'Profissional 2026',
+                btnSuperDJ: 'CLIQUE AQUI PARA COMPRAR R$ 19,90',
+                depoimentosTitle: 'DEPOIMENTOS DE CLIENTES',
+                footerText: 'Mundo Store Packs. Todos os direitos reservados.',
+                casinoBtn: 'CASSINO PAGANDO TIGRINHO CLICK AQUI!',
+                idioma: 'Português'
+            },
+            
+            // Inglês (EUA, Canadá, Reino Unido, Austrália, etc)
+            'en': {
+                pageTitle: 'Mundo Store Packs | Update Your DJ Pendrive',
+                mainTitle: 'WORLD STORE PACKS',
+                mainSlogan: 'Update your DJ pendrive with thousands of songs, sound effects and professional software',
+                card1Title: 'PLUS PACK UPDATE PENDRIVE',
+                card1Features: [
+                    'Over 25 thousand MP3 songs',
+                    '+30 updated rhythms',
+                    'No jingles',
+                    'Instant download (Hosted on Media Fire and Google Drive)',
+                    'Links sent by email after payment',
+                    '+10 THOUSAND EXTRA SONGS!',
+                    'NO UPDATES!'
+                ],
+                card1Placeholder: 'Update Pendrive',
+                btnPackPlus: 'CLICK HERE TO BUY $2.00',
+                card2Title: 'SUPER DJ PROFESSIONAL 2026',
+                card2Features: [
+                    '+7 Terabytes of music',
+                    '+2 Terabytes of sound effects',
+                    'Updated repertoires',
+                    'Music videos and DJ software',
+                    'Gym packs',
+                    'Professional Gospel Pack',
+                    'DJ Retro Pack (Discos, Flashback, Eurodance, etc)',
+                    'Funk Pack (Light, Megafunk, Electrofunk, etc)',
+                    'Party packs (Wedding, 15 years, Graduation, etc)',
+                    '✅ 100% HOSTED ON TELEGRAM!',
+                    '✅ UPDATES (EVERYTHING WE GET WE PUT IN THE VIP TELEGRAM GROUP)!'
+                ],
+                card2Placeholder: 'Professional 2026',
+                btnSuperDJ: 'CLICK HERE TO BUY $4.00',
+                depoimentosTitle: 'CUSTOMER TESTIMONIALS',
+                footerText: 'World Store Packs. All rights reserved.',
+                casinoBtn: 'CASINO PAYING TIGER CLICK HERE!',
+                idioma: 'English'
+            },
+            
+            // Espanhol (Espanha, México, Argentina, etc)
+            'es': {
+                pageTitle: 'Mundo Store Packs | Actualiza tu Pendrive DJ',
+                mainTitle: 'MUNDO STORE PACKS',
+                mainSlogan: 'Actualiza tu pendrive DJ con miles de canciones, efectos de sonido y software profesional',
+                card1Title: 'PACK PLUS ACTUALIZAR PENDRIVE',
+                card1Features: [
+                    'Más de 25 mil canciones MP3',
+                    '+30 ritmos actualizados',
+                    'Sin jingles',
+                    'Descarga inmediata (Alojado en Media Fire y Google Drive)',
+                    'Enlaces enviados por correo después del pago',
+                    '¡+10 MIL CANCIONES EXTRAS!',
+                    '¡SIN ACTUALIZACIONES!'
+                ],
+                card1Placeholder: 'Actualizar Pendrive',
+                btnPackPlus: 'HAGA CLIC AQUÍ PARA COMPRAR $2.00',
+                card2Title: 'SUPER DJ PROFESIONAL 2026',
+                card2Features: [
+                    '+7 Terabytes de música',
+                    '+2 Terabytes de efectos de sonido',
+                    'Repertorios actualizados',
+                    'Videoclips y software para DJ',
+                    'Packs para gimnasio',
+                    'Pack Gospel Profesional',
+                    'Pack DJ Retro (Discotecas, Flashback, Eurodance, etc)',
+                    'Pack Funk (Light, Megafunk, Electrofunk, etc)',
+                    'Pack para fiestas (Boda, 15 años, Graduación, etc)',
+                    '✅ ¡100% ALOJADO EN TELEGRAM!',
+                    '✅ ¡ACTUALIZACIONES (TODO LO QUE CONSEGUIMOS LO PONEMOS EN EL GRUPO VIP DE TELEGRAM)!'
+                ],
+                card2Placeholder: 'Profesional 2026',
+                btnSuperDJ: 'HAGA CLIC AQUÍ PARA COMPRAR $4.00',
+                depoimentosTitle: 'TESTIMONIOS DE CLIENTES',
+                footerText: 'Mundo Store Packs. Todos los derechos reservados.',
+                casinoBtn: 'CASINO PAGANDO TIGRINO ¡CLIC AQUÍ!',
+                idioma: 'Español'
+            },
+            
+            // Francês (França, Canadá, Bélgica, etc)
+            'fr': {
+                pageTitle: 'Mundo Store Packs | Mettez à jour votre Pendrive DJ',
+                mainTitle: 'MONDE STORE PACKS',
+                mainSlogan: 'Mettez à jour votre pendrive DJ avec des milliers de chansons, effets sonores et logiciels professionnels',
+                card1Title: 'PACK PLUS METTRE À JOUR PENDRIVE',
+                card1Features: [
+                    'Plus de 25 mille chansons MP3',
+                    '+30 rythmes mis à jour',
+                    'Pas de jingles',
+                    'Téléchargement instantané (Hébergé sur Media Fire et Google Drive)',
+                    'Liens envoyés par email après paiement',
+                    '+10 MILLE CHANSONS SUPPLÉMENTAIRES!',
+                    'PAS DE MISES À JOUR!'
+                ],
+                card1Placeholder: 'Mettre à jour Pendrive',
+                btnPackPlus: 'CLIQUEZ ICI POUR ACHETER 2,00 $',
+                card2Title: 'SUPER DJ PROFESSIONNEL 2026',
+                card2Features: [
+                    '+7 Téraoctets de musique',
+                    '+2 Téraoctets d\'effets sonores',
+                    'Répertoires mis à jour',
+                    'Vidéoclips et logiciels pour DJ',
+                    'Packs pour salle de sport',
+                    'Pack Gospel Professionnel',
+                    'Pack DJ Retro (Discothèques, Flashback, Eurodance, etc)',
+                    'Pack Funk (Light, Megafunk, Electrofunk, etc)',
+                    'Pack pour fêtes (Mariage, 15 ans, Remise de diplômes, etc)',
+                    '✅ 100% HÉBERGÉ SUR TELEGRAM!',
+                    '✅ MISES À JOUR (TOUT CE QUE NOUS OBTENONS NOUS LE METTONS DANS LE GROUPE VIP TELEGRAM)!'
+                ],
+                card2Placeholder: 'Professionnel 2026',
+                btnSuperDJ: 'CLIQUEZ ICI POUR ACHETER 4,00 $',
+                depoimentosTitle: 'TÉMOIGNAGES DE CLIENTS',
+                footerText: 'Monde Store Packs. Tous droits réservés.',
+                casinoBtn: 'CASINO PAYANT TIGRINHO CLIQUEZ ICI!',
+                idioma: 'Français'
+            },
+            
+            // Alemão (Alemanha, Áustria, Suíça)
+            'de': {
+                pageTitle: 'Mundo Store Packs | Aktualisieren Sie Ihren DJ-Pendrive',
+                mainTitle: 'WELT STORE PACKS',
+                mainSlogan: 'Aktualisieren Sie Ihren DJ-Pendrive mit Tausenden von Songs, Soundeffekten und professioneller Software',
+                card1Title: 'PLUS PACK PENDRIVE AKTUALISIEREN',
+                card1Features: [
+                    'Über 25 Tausend MP3-Songs',
+                    '+30 aktualisierte Rhythmen',
+                    'Keine Jingles',
+                    'Sofortiger Download (Gehostet auf Media Fire und Google Drive)',
+                    'Links nach Zahlung per E-Mail gesendet',
+                    '+10 TAUSEND EXTRA SONGS!',
+                    'KEINE UPDATES!'
+                ],
+                card1Placeholder: 'Pendrive aktualisieren',
+                btnPackPlus: 'KLICKEN SIE HIER, UM 2,00 $ ZU KAUFEN',
+                card2Title: 'SUPER DJ PROFESSIONELL 2026',
+                card2Features: [
+                    '+7 Terabyte Musik',
+                    '+2 Terabyte Soundeffekte',
+                    'Aktualisierte Repertoires',
+                    'Musikvideos und DJ-Software',
+                    'Fitness-Studio-Packs',
+                    'Professionelles Gospel-Pack',
+                    'DJ Retro-Pack (Diskotheken, Flashback, Eurodance, etc)',
+                    'Funk-Pack (Light, Megafunk, Electrofunk, etc)',
+                    'Party-Packs (Hochzeit, 15 Jahre, Abschlussfeier, etc)',
+                    '✅ 100% AUF TELEGRAM GEHOSTET!',
+                    '✅ UPDATES (ALLES, WAS WIR BEKOMMEN, LEGEN WIR IN DIE VIP-TELEGRAM-GRUPPE)!'
+                ],
+                card2Placeholder: 'Professionell 2026',
+                btnSuperDJ: 'KLICKEN SIE HIER, UM 4,00 $ ZU KAUFEN',
+                depoimentosTitle: 'KUNDENMEINUNGEN',
+                footerText: 'Welt Store Packs. Alle Rechte vorbehalten.',
+                casinoBtn: 'CASINO ZAHLT TIGRINHO HIER KLICKEN!',
+                idioma: 'Deutsch'
+            },
+            
+            // Italiano (Itália)
+            'it': {
+                pageTitle: 'Mundo Store Packs | Aggiorna il tuo Pendrive DJ',
+                mainTitle: 'MONDO STORE PACKS',
+                mainSlogan: 'Aggiorna il tuo pendrive DJ con migliaia di brani, effetti sonori e software professionali',
+                card1Title: 'PACK PLUS AGGIORNA PENDRIVE',
+                card1Features: [
+                    'Oltre 25 mila brani MP3',
+                    '+30 ritmi aggiornati',
+                    'Niente jingle',
+                    'Download immediato (Ospitato su Media Fire e Google Drive)',
+                    'Link inviati via email dopo il pagamento',
+                    '+10 MILA BRANI EXTRA!',
+                    'NESSUN AGGIORNAMENTO!'
+                ],
+                card1Placeholder: 'Aggiorna Pendrive',
+                btnPackPlus: 'CLICCA QUI PER ACQUISTARE 2,00 $',
+                card2Title: 'SUPER DJ PROFESSIONALE 2026',
+                card2Features: [
+                    '+7 Terabyte di musica',
+                    '+2 Terabyte di effetti sonori',
+                    'Repertori aggiornati',
+                    'Videoclip e software per DJ',
+                    'Pacchetti per palestra',
+                    'Pacchetto Gospel Professionale',
+                    'Pacchetto DJ Retro (Discoteche, Flashback, Eurodance, ecc)',
+                    'Pacchetto Funk (Light, Megafunk, Electrofunk, ecc)',
+                    'Pacchetti per feste (Matrimonio, 15 anni, Laurea, ecc)',
+                    '✅ 100% OSPITATO SU TELEGRAM!',
+                    '✅ AGGIORNAMENTI (TUTTO CIÒ CHE OTTENIAMO LO METTIAMO NEL GRUPPO VIP DI TELEGRAM)!'
+                ],
+                card2Placeholder: 'Professionale 2026',
+                btnSuperDJ: 'CLICCA QUI PER ACQUISTARE 4,00 $',
+                depoimentosTitle: 'TESTIMONIANZE DEI CLIENTI',
+                footerText: 'Mondo Store Packs. Tutti i diritti riservati.',
+                casinoBtn: 'CASINO CHE PAGA TIGRINHO CLICCA QUI!',
+                idioma: 'Italiano'
+            }
+        };
+        
+        // Mapeamento de países para idiomas
+        const paisParaIdioma = {
+            'BR': 'pt-BR', // Brasil
+            'US': 'en', 'CA': 'en', 'GB': 'en', 'AU': 'en', 'NZ': 'en', 'IE': 'en', // Países de língua inglesa
+            'ES': 'es', 'MX': 'es', 'AR': 'es', 'CO': 'es', 'CL': 'es', 'PE': 'es', // Países de língua espanhola
+            'FR': 'fr', 'BE': 'fr', 'CH': 'fr', 'CA': 'fr', // Países de língua francesa (Canadá tem duas línguas)
+            'DE': 'de', 'AT': 'de', 'CH': 'de', // Países de língua alemã
+            'IT': 'it', 'CH': 'it', 'SM': 'it', 'VA': 'it' // Países de língua italiana
+        };
+        
+        // Bandeiras por código de país
+        const bandeiras = {
+            'BR': 'https://flagcdn.com/w20/br.png',
+            'US': 'https://flagcdn.com/w20/us.png',
+            'CA': 'https://flagcdn.com/w20/ca.png',
+            'GB': 'https://flagcdn.com/w20/gb.png',
+            'AU': 'https://flagcdn.com/w20/au.png',
+            'ES': 'https://flagcdn.com/w20/es.png',
+            'MX': 'https://flagcdn.com/w20/mx.png',
+            'AR': 'https://flagcdn.com/w20/ar.png',
+            'FR': 'https://flagcdn.com/w20/fr.png',
+            'DE': 'https://flagcdn.com/w20/de.png',
+            'IT': 'https://flagcdn.com/w20/it.png',
+            'PT': 'https://flagcdn.com/w20/pt.png'
+        };
+        
         // ================== DADOS PARA NOTIFICAÇÕES ==================
         const clientesMasculinos = [
             { nome: "Carlos Silva", estado: "SP", rede: "@carlossilva", produto: "Pack Plus" },
             { nome: "Roberto Santos", estado: "RJ", rede: "@robertosantos", produto: "Super DJ Profissional 2026" },
             { nome: "Fernando Costa", estado: "MG", rede: "@fernandocosta", produto: "Pack Plus" },
             { nome: "Lucas Almeida", estado: "PR", rede: "@lucasalmeida", produto: "Super DJ Profissional 2026" },
-            { nome: "Marcos Oliveira", estado: "RS", rede: "@marcosoliveira", produto: "Pack Plus" },
-            { nome: "Rafael Souza", estado: "SC", rede: "@rafaelsouza", produto: "Super DJ Profissional 2026" },
-            { nome: "João Pereira", estado: "BA", rede: "@joaopereira", produto: "Pack Plus" }
+            { nome: "Marcos Oliveira", estado: "RS", rede: "@marcosoliveira", produto: "Pack Plus" }
         ];
         
         const clientesFemininos = [
@@ -733,9 +1030,7 @@
             { nome: "Juliana Lima", estado: "RJ", rede: "@julianalima", produto: "Pack Plus" },
             { nome: "Patrícia Santos", estado: "MG", rede: "@patriciasantos", produto: "Super DJ Profissional 2026" },
             { nome: "Camila Ferreira", estado: "PR", rede: "@camilaferreira", produto: "Pack Plus" },
-            { nome: "Amanda Rocha", estado: "RS", rede: "@amandarocha", produto: "Super DJ Profissional 2026" },
-            { nome: "Beatriz Alves", estado: "SC", rede: "@beatrizalves", produto: "Pack Plus" },
-            { nome: "Maria Oliveira", estado: "BA", rede: "@mariaoliveira", produto: "Super DJ Profissional 2026" }
+            { nome: "Amanda Rocha", estado: "RS", rede: "@amandarocha", produto: "Super DJ Profissional 2026" }
         ];
         
         const fotosMasculinas = [
@@ -743,9 +1038,7 @@
             "https://randomuser.me/api/portraits/men/2.jpg",
             "https://randomuser.me/api/portraits/men/3.jpg",
             "https://randomuser.me/api/portraits/men/4.jpg",
-            "https://randomuser.me/api/portraits/men/5.jpg",
-            "https://randomuser.me/api/portraits/men/6.jpg",
-            "https://randomuser.me/api/portraits/men/7.jpg"
+            "https://randomuser.me/api/portraits/men/5.jpg"
         ];
         
         const fotosFemininas = [
@@ -753,259 +1046,114 @@
             "https://randomuser.me/api/portraits/women/2.jpg",
             "https://randomuser.me/api/portraits/women/3.jpg",
             "https://randomuser.me/api/portraits/women/4.jpg",
-            "https://randomuser.me/api/portraits/women/5.jpg",
-            "https://randomuser.me/api/portraits/women/6.jpg",
-            "https://randomuser.me/api/portraits/women/7.jpg"
+            "https://randomuser.me/api/portraits/women/5.jpg"
         ];
         
-        // Depoimentos
-        const depoimentos = [
-            { nome: "Carlos Silva", estado: "São Paulo", rede: "Facebook", texto: "Comprei o Pack Plus e superou minhas expectativas! As músicas são atualizadas e a qualidade é excelente. Recomendo!" },
-            { nome: "Ana Costa", estado: "Rio de Janeiro", rede: "Instagram", texto: "O Super DJ Profissional mudou meu trabalho! Tenho acesso a milhares de músicas e efeitos que impressionam meus clientes." },
-            { nome: "Roberto Santos", estado: "Minas Gerais", rede: "Facebook", texto: "Atualizei meu pendrive em minutos e já estou usando nas festas. O download foi rápido e as músicas são perfeitas!" },
-            { nome: "Juliana Lima", estado: "Paraná", rede: "Instagram", texto: "Como DJ iniciante, esses packs foram essenciais para montar meu repertório. O valor é irrisório pelo que se recebe!" },
-            { nome: "Fernando Costa", estado: "Rio Grande do Sul", rede: "Facebook", texto: "Já comprei os dois packs e não me arrependo. Sempre que preciso de músicas novas, sei que posso contar com a Mundo Store!" }
-        ];
+        // Depoimentos em diferentes idiomas
+        const depoimentosPorIdioma = {
+            'pt-BR': [
+                { nome: "Carlos Silva", estado: "São Paulo", rede: "Facebook", texto: "Comprei o Pack Plus e superou minhas expectativas! As músicas são atualizadas e a qualidade é excelente. Recomendo!" },
+                { nome: "Ana Costa", estado: "Rio de Janeiro", rede: "Instagram", texto: "O Super DJ Profissional mudou meu trabalho! Tenho acesso a milhares de músicas e efeitos que impressionam meus clientes." },
+                { nome: "Roberto Santos", estado: "Minas Gerais", rede: "Facebook", texto: "Atualizei meu pendrive em minutos e já estou usando nas festas. O download foi rápido e as músicas são perfeitas!" }
+            ],
+            'en': [
+                { nome: "John Smith", estado: "New York", rede: "Facebook", texto: "I bought the Plus Pack and it exceeded my expectations! The songs are updated and the quality is excellent. I recommend!" },
+                { nome: "Emma Johnson", estado: "California", rede: "Instagram", texto: "Super DJ Professional changed my work! I have access to thousands of songs and effects that impress my clients." },
+                { nome: "Michael Brown", estado: "Texas", rede: "Facebook", texto: "Updated my pendrive in minutes and I'm already using it at parties. The download was fast and the songs are perfect!" }
+            ],
+            'es': [
+                { nome: "Carlos García", estado: "Madrid", rede: "Facebook", texto: "¡Compré el Pack Plus y superó mis expectativas! Las canciones están actualizadas y la calidad es excelente. ¡Lo recomiendo!" },
+                { nome: "Ana Martínez", estado: "Barcelona", rede: "Instagram", texto: "¡Super DJ Profesional cambió mi trabajo! Tengo acceso a miles de canciones y efectos que impresionan a mis clientes." },
+                { nome: "Roberto López", estado: "Valencia", rede: "Facebook", texto: "¡Actualicé mi pendrive en minutos y ya lo estoy usando en las fiestas! La descarga fue rápida y las canciones son perfectas." }
+            ],
+            'fr': [
+                { nome: "Jean Dubois", estado: "Paris", rede: "Facebook", texto: "J'ai acheté le Pack Plus et il a dépassé mes attentes ! Les chansons sont mises à jour et la qualité est excellente. Je recommande !" },
+                { nome: "Marie Martin", estado: "Lyon", rede: "Instagram", texto: "Super DJ Professionnel a changé mon travail ! J'ai accès à des milliers de chansons et d'effets qui impressionnent mes clients." },
+                { nome: "Pierre Bernard", estado: "Marseille", rede: "Facebook", texto: "J'ai mis à jour ma clé USB en quelques minutes et je l'utilise déjà en soirée. Le téléchargement était rapide et les chansons sont parfaites !" }
+            ],
+            'de': [
+                { nome: "Thomas Schmidt", estado: "Berlin", rede: "Facebook", texto: "Ich habe das Plus Pack gekauft und es hat meine Erwartungen übertroffen! Die Songs sind aktualisiert und die Qualität ist ausgezeichnet. Ich empfehle es!" },
+                { nome: "Anna Müller", estado: "München", rede: "Instagram", texto: "Super DJ Professional hat meine Arbeit verändert! Ich habe Zugriff auf Tausende von Songs und Effekten, die meine Kunden beeindrucken." },
+                { nome: "Michael Wagner", estado: "Hamburg", rede: "Facebook", texto: "Ich habe meinen Pendrive in Minuten aktualisiert und verwende ihn bereits auf Partys. Der Download war schnell und die Songs sind perfekt!" }
+            ],
+            'it': [
+                { nome: "Giuseppe Rossi", estado: "Roma", rede: "Facebook", texto: "Ho comprato il Pack Plus e ha superato le mie aspettative! Le canzoni sono aggiornate e la qualità è eccellente. Lo consiglio!" },
+                { nome: "Maria Bianchi", estado: "Milano", rede: "Instagram", texto: "Super DJ Professionale ha cambiato il mio lavoro! Ho accesso a migliaia di canzoni ed effetti che impressionano i miei clienti." },
+                { nome: "Roberto Ferrari", estado: "Napoli", rede: "Facebook", texto: "Ho aggiornato il mio pendrive in pochi minuti e lo sto già usando alle feste. Il download è stato veloce e le canzoni sono perfette!" }
+            ]
+        };
         
         // ================== VARIÁVEIS GLOBAIS ==================
-        let geoData = { city: null, region: null };
+        let geoData = { city: null, region: null, country: null, countryCode: null };
         let notificacoesExibidas = [];
-        let depoimentosExibidos = [];
+        let idiomaAtual = 'pt-BR';
+        let paisAtual = 'BR';
         
-        // ================== CARREGAR IMAGENS DOS CARDS ==================
-        function carregarImagensCards() {
-            const card1Container = document.getElementById('card1-image');
-            const card2Container = document.getElementById('card2-image');
-            const placeholder1 = document.getElementById('card1-placeholder');
-            const placeholder2 = document.getElementById('card2-placeholder');
+        // ================== FUNÇÃO DE TRADUÇÃO ==================
+        function aplicarTraducao(idioma) {
+            const traducao = traducoes[idioma] || traducoes['pt-BR'];
             
-            // URLs das imagens (substituir pelas suas imagens reais)
-            const imagens = {
-                card1: 'pen.jpg',
-                card2: '15.jpg'
-            };
+            // Atualizar título da página
+            document.title = traducao.pageTitle;
+            document.getElementById('page-title').textContent = traducao.pageTitle;
             
-            // Imagens de fallback caso as originais não carreguem
-            const fallbackImagens = {
-                card1: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
-                card2: 'https://images.unsplash.com/photo-1518609878373-06d740f60d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'
-            };
+            // Atualizar elementos da página
+            document.getElementById('main-title').textContent = traducao.mainTitle;
+            document.getElementById('main-slogan').textContent = traducao.mainSlogan;
+            document.getElementById('card1-title').textContent = traducao.card1Title;
+            document.getElementById('card2-title').textContent = traducao.card2Title;
+            document.getElementById('btn-pack-plus-text').textContent = traducao.btnPackPlus;
+            document.getElementById('btn-super-dj-text').textContent = traducao.btnSuperDJ;
+            document.getElementById('depoimentos-title').textContent = traducao.depoimentosTitle;
+            document.getElementById('footer-text').textContent = traducao.footerText;
+            document.getElementById('casino-btn-text').textContent = traducao.casinoBtn;
+            document.getElementById('card1-placeholder-text').textContent = traducao.card1Placeholder;
+            document.getElementById('card2-placeholder-text').textContent = traducao.card2Placeholder;
             
-            // Função para carregar imagem
-            function carregarImagem(container, placeholder, imagemUrl, fallbackUrl) {
-                const img = new Image();
-                
-                img.onload = function() {
-                    // Remove o placeholder
-                    if (placeholder) placeholder.style.display = 'none';
-                    
-                    // Cria elemento de imagem
-                    const imgElement = document.createElement('img');
-                    imgElement.src = imagemUrl;
-                    imgElement.alt = "Imagem do produto";
-                    imgElement.className = 'card-image';
-                    
-                    // Adiciona a imagem ao container
-                    container.prepend(imgElement);
-                };
-                
-                img.onerror = function() {
-                    console.log('Erro ao carregar imagem, usando fallback');
-                    
-                    // Remove o placeholder
-                    if (placeholder) placeholder.style.display = 'none';
-                    
-                    // Tenta carregar fallback
-                    const imgFallback = new Image();
-                    
-                    imgFallback.onload = function() {
-                        const imgElement = document.createElement('img');
-                        imgElement.src = fallbackUrl;
-                        imgElement.alt = "Imagem do produto";
-                        imgElement.className = 'card-image';
-                        
-                        // Adiciona a imagem ao container
-                        container.prepend(imgElement);
-                    };
-                    
-                    imgFallback.onerror = function() {
-                        console.log('Erro ao carregar fallback, mantendo placeholder');
-                        // Mantém o placeholder visível
-                    };
-                    
-                    imgFallback.src = fallbackUrl;
-                };
-                
-                img.src = imagemUrl;
+            // Atualizar bandeira e texto de idioma
+            const flagElement = document.getElementById('country-flag');
+            const idiomaTextElement = document.getElementById('idioma-text');
+            
+            if (bandeiras[paisAtual]) {
+                flagElement.src = bandeiras[paisAtual];
+            } else {
+                flagElement.src = bandeiras['BR']; // Default para Brasil
             }
             
-            // Carregar imagens dos cards
-            carregarImagem(card1Container, placeholder1, imagens.card1, fallbackImagens.card1);
-            carregarImagem(card2Container, placeholder2, imagens.card2, fallbackImagens.card2);
-        }
-        
-        // ================== FUNÇÕES DE LOCALIZAÇÃO ==================
-        async function carregarLocalizacao() {
-            try {
-                const response = await fetch("https://ipapi.co/json/");
-                const data = await response.json();
-                if (data.city && data.region) {
-                    geoData.city = data.city;
-                    geoData.region = data.region;
-                    atualizarLocalizacaoNaPagina();
-                    return true;
+            idiomaTextElement.textContent = traducao.idioma;
+            
+            // Atualizar lista de features do card 1
+            const card1Features = document.getElementById('card1-features');
+            card1Features.innerHTML = '';
+            traducao.card1Features.forEach(feature => {
+                const li = document.createElement('li');
+                li.textContent = feature;
+                if (feature.includes('SEM ATUALIZAÇÕES') || feature.includes('NO UPDATES') || feature.includes('SIN ACTUALIZACIONES') || feature.includes('PAS DE MISES À JOUR') || feature.includes('KEINE UPDATES') || feature.includes('NESSUN AGGIORNAMENTO')) {
+                    li.classList.add('sem-atualizacoes');
                 }
-            } catch (error) {
-                console.log("Erro ao carregar localização do ipapi:", error);
-            }
+                card1Features.appendChild(li);
+            });
             
-            try {
-                const response2 = await fetch("https://ipwho.is/");
-                const data2 = await response2.json();
-                if (data2.city && data2.region) {
-                    geoData.city = data2.city;
-                    geoData.region = data2.region;
-                    atualizarLocalizacaoNaPagina();
-                    return true;
-                }
-            } catch (error) {
-                console.log("Erro ao carregar localização do ipwho.is:", error);
-            }
+            // Atualizar lista de features do card 2
+            const card2Features = document.getElementById('card2-features');
+            card2Features.innerHTML = '';
+            traducao.card2Features.forEach(feature => {
+                const li = document.createElement('li');
+                li.textContent = feature;
+                card2Features.appendChild(li);
+            });
             
-            // Se não conseguir detectar localização, oculta o elemento
-            const elemento = document.getElementById("localizacao-usuario");
-            if (elemento) {
-                elemento.style.display = "none";
-            }
-            return false;
-        }
-        
-        function atualizarLocalizacaoNaPagina() {
-            const elemento = document.getElementById("localizacao-usuario");
-            if (elemento && geoData.city && geoData.region) {
-                elemento.innerText = `📍 ${geoData.city} - ${geoData.region}`;
-                elemento.style.display = "inline-block";
-            }
-        }
-        
-        // ================== NOTIFICAÇÕES EM TEMPO REAL ==================
-        function mostrarNotificacao() {
-            // Escolher aleatoriamente entre cliente masculino ou feminino
-            const usarClienteMasculino = Math.random() > 0.5;
-            const clientes = usarClienteMasculino ? clientesMasculinos : clientesFemininos;
-            const fotos = usarClienteMasculino ? fotosMasculinas : fotosFemininas;
+            // Atualizar depoimentos
+            const depoimentos = depoimentosPorIdioma[idioma] || depoimentosPorIdioma['pt-BR'];
+            const depoimentosContainer = document.getElementById('depoimentos-slider');
+            depoimentosContainer.innerHTML = '';
             
-            // Selecionar cliente e foto que ainda não foram usados
-            let indiceCliente, indiceFoto;
-            let tentativas = 0;
-            
-            do {
-                indiceCliente = Math.floor(Math.random() * clientes.length);
-                indiceFoto = Math.floor(Math.random() * fotos.length);
-                tentativas++;
-                
-                // Se tentou muitas vezes, reseta a lista para evitar loop infinito
-                if (tentativas > 20) {
-                    notificacoesExibidas = [];
-                    break;
-                }
-            } while (notificacoesExibidas.includes(`${indiceCliente}-${indiceFoto}`));
-            
-            notificacoesExibidas.push(`${indiceCliente}-${indiceFoto}`);
-            
-            // Se a lista ficar muito grande, remove os mais antigos
-            if (notificacoesExibidas.length > 10) {
-                notificacoesExibidas.shift();
-            }
-            
-            const cliente = clientes[indiceCliente];
-            const foto = fotos[indiceFoto];
-            
-            // Atualizar elementos da notificação
-            document.getElementById("notification-avatar").src = foto;
-            document.getElementById("notification-name").textContent = cliente.nome;
-            document.getElementById("notification-product").textContent = `Comprou o ${cliente.produto}`;
-            
-            // Tempo aleatório (agora mesmo, há 2 minutos, etc.)
-            const tempos = ["Agora mesmo", "Há 2 min", "Há 5 min"];
-            document.getElementById("notification-time").textContent = tempos[Math.floor(Math.random() * tempos.length)];
-            
-            // Mostrar notificação
-            const notificacao = document.getElementById("notification");
-            notificacao.classList.add("show");
-            
-            // Ocultar após 8 segundos
-            setTimeout(() => {
-                notificacao.classList.remove("show");
-            }, 8000);
-        }
-        
-        // ================== BOTÃO CASSINO (OCULTAR/MOSTRAR) ==================
-        function controlarBotaoCassino() {
-            const botaoCassino = document.getElementById("floating-casino");
-            let visivel = true;
-            
-            function alternarVisibilidade() {
-                if (visivel) {
-                    // Ocultar por 10 segundos
-                    botaoCassino.classList.remove("show");
-                    setTimeout(() => {
-                        visivel = false;
-                        // Agendar para mostrar após 20 segundos
-                        setTimeout(() => {
-                            botaoCassino.classList.add("show");
-                            visivel = true;
-                            // Reiniciar ciclo
-                            setTimeout(alternarVisibilidade, 10000); // 10 segundos visível
-                        }, 20000); // 20 segundos oculto
-                    }, 300); // Pequeno delay para animação
-                } else {
-                    // Mostrar por 10 segundos
-                    botaoCassino.classList.add("show");
-                    setTimeout(() => {
-                        visivel = true;
-                        // Agendar para ocultar após 10 segundos
-                        setTimeout(() => {
-                            botaoCassino.classList.remove("show");
-                            visivel = false;
-                            // Reiniciar ciclo
-                            setTimeout(alternarVisibilidade, 20000); // 20 segundos oculto
-                        }, 10000); // 10 segundos visível
-                    }, 300); // Pequeno delay para animação
-                }
-            }
-            
-            // Iniciar o ciclo
-            setTimeout(() => {
-                botaoCassino.classList.add("show");
-                setTimeout(alternarVisibilidade, 10000); // Primeira ocultação após 10 segundos
-            }, 2000); // Mostrar após 2 segundos do carregamento
-        }
-        
-        // ================== DEPOIMENTOS ==================
-        function inicializarDepoimentos() {
-            const container = document.querySelector(".depoimentos-slider");
-            
-            // Limpar container
-            container.innerHTML = "";
-            
-            // Selecionar 5 depoimentos aleatórios
-            const depoimentosSelecionados = [];
-            while (depoimentosSelecionados.length < 5 && depoimentosSelecionados.length < depoimentos.length) {
-                const indice = Math.floor(Math.random() * depoimentos.length);
-                if (!depoimentosSelecionados.includes(indice)) {
-                    depoimentosSelecionados.push(indice);
-                }
-            }
-            
-            // Criar elementos dos depoimentos
-            depoimentosSelecionados.forEach((indice, i) => {
-                const depoimento = depoimentos[indice];
+            depoimentos.forEach((depoimento, i) => {
                 const elemento = document.createElement("div");
                 elemento.className = `depoimento ${i === 0 ? 'active' : ''}`;
                 
                 // Escolher foto aleatória baseada no gênero do nome
-                const foto = depoimento.nome.includes("a") && !depoimento.nome.includes("Carlos") 
+                const foto = depoimento.nome.includes("a") || depoimento.nome.includes("Emma") || depoimento.nome.includes("Ana") || depoimento.nome.includes("Marie") || depoimento.nome.includes("Anna") || depoimento.nome.includes("Maria")
                     ? fotosFemininas[Math.floor(Math.random() * fotosFemininas.length)]
                     : fotosMasculinas[Math.floor(Math.random() * fotosMasculinas.length)];
                 
@@ -1023,18 +1171,259 @@
                     </div>
                 `;
                 
-                container.appendChild(elemento);
+                depoimentosContainer.appendChild(elemento);
             });
             
-            // Rotacionar depoimentos a cada 40 segundos
-            let indiceAtual = 0;
-            setInterval(() => {
-                const todosDepoimentos = document.querySelectorAll(".depoimento");
-                todosDepoimentos.forEach(dep => dep.classList.remove("active"));
+            // Mostrar bandeira de idioma se não for Brasil
+            const idiomaFlagElement = document.getElementById('idioma-flag');
+            if (paisAtual !== 'BR') {
+                idiomaFlagElement.style.display = 'flex';
+            }
+        }
+        
+        // ================== DETECTAR LOCALIZAÇÃO E IDIOMA ==================
+        async function detectarLocalizacaoEIdioma() {
+            try {
+                const response = await fetch("https://ipapi.co/json/");
+                const data = await response.json();
                 
-                indiceAtual = (indiceAtual + 1) % todosDepoimentos.length;
-                todosDepoimentos[indiceAtual].classList.add("active");
-            }, 40000);
+                if (data.country_code && data.city && data.region) {
+                    geoData.city = data.city;
+                    geoData.region = data.region;
+                    geoData.country = data.country_name;
+                    geoData.countryCode = data.country_code;
+                    
+                    // Determinar idioma baseado no país
+                    paisAtual = geoData.countryCode;
+                    idiomaAtual = paisParaIdioma[paisAtual] || 'en'; // Default para inglês se país não mapeado
+                    
+                    // Se for Brasil, manter em português
+                    if (paisAtual === 'BR') {
+                        idiomaAtual = 'pt-BR';
+                    }
+                    
+                    atualizarLocalizacaoNaPagina();
+                    aplicarTraducao(idiomaAtual);
+                    
+                    return true;
+                }
+            } catch (error) {
+                console.log("Erro ao carregar localização do ipapi:", error);
+            }
+            
+            try {
+                const response2 = await fetch("https://ipwho.is/");
+                const data2 = await response2.json();
+                
+                if (data2.country_code && data2.city && data2.region) {
+                    geoData.city = data2.city;
+                    geoData.region = data2.region;
+                    geoData.country = data2.country;
+                    geoData.countryCode = data2.country_code;
+                    
+                    // Determinar idioma baseado no país
+                    paisAtual = geoData.countryCode;
+                    idiomaAtual = paisParaIdioma[paisAtual] || 'en'; // Default para inglês se país não mapeado
+                    
+                    // Se for Brasil, manter em português
+                    if (paisAtual === 'BR') {
+                        idiomaAtual = 'pt-BR';
+                    }
+                    
+                    atualizarLocalizacaoNaPagina();
+                    aplicarTraducao(idiomaAtual);
+                    
+                    return true;
+                }
+            } catch (error) {
+                console.log("Erro ao carregar localização do ipwho.is:", error);
+            }
+            
+            // Se não conseguir detectar localização, usar português como padrão
+            geoData.city = null;
+            geoData.region = null;
+            geoData.country = null;
+            geoData.countryCode = 'BR';
+            paisAtual = 'BR';
+            idiomaAtual = 'pt-BR';
+            
+            aplicarTraducao(idiomaAtual);
+            
+            // Ocultar localização
+            const elemento = document.getElementById("localizacao-usuario");
+            if (elemento) {
+                elemento.style.display = "none";
+            }
+            
+            return false;
+        }
+        
+        function atualizarLocalizacaoNaPagina() {
+            const elemento = document.getElementById("localizacao-usuario");
+            if (elemento && geoData.city && geoData.region) {
+                elemento.innerText = `📍 ${geoData.city} - ${geoData.region}`;
+                elemento.style.display = "inline-block";
+            }
+        }
+        
+        // ================== CARREGAR IMAGENS DOS CARDS ==================
+        function carregarImagensCards() {
+            const card1Container = document.getElementById('card1-image');
+            const card2Container = document.getElementById('card2-image');
+            const placeholder1 = document.getElementById('card1-placeholder');
+            const placeholder2 = document.getElementById('card2-placeholder');
+            
+            // URLs das imagens (substituir pelas suas imagens reais)
+            const imagens = {
+                card1: 'pen.jpg',
+                card2: '15.jpg'
+            };
+            
+            // Imagens de fallback
+            const fallbackImagens = {
+                card1: 'https://images.unsplash.com/photo-1511379938547-c1f69419868d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80',
+                card2: 'https://images.unsplash.com/photo-1518609878373-06d740f60d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80'
+            };
+            
+            function carregarImagem(container, placeholder, imagemUrl, fallbackUrl) {
+                const img = new Image();
+                
+                img.onload = function() {
+                    if (placeholder) placeholder.style.display = 'none';
+                    const imgElement = document.createElement('img');
+                    imgElement.src = imagemUrl;
+                    imgElement.alt = "Imagem do produto";
+                    imgElement.className = 'card-image';
+                    container.prepend(imgElement);
+                };
+                
+                img.onerror = function() {
+                    const imgFallback = new Image();
+                    imgFallback.onload = function() {
+                        if (placeholder) placeholder.style.display = 'none';
+                        const imgElement = document.createElement('img');
+                        imgElement.src = fallbackUrl;
+                        imgElement.alt = "Imagem do produto";
+                        imgElement.className = 'card-image';
+                        container.prepend(imgElement);
+                    };
+                    imgFallback.src = fallbackUrl;
+                };
+                
+                img.src = imagemUrl;
+            }
+            
+            carregarImagem(card1Container, placeholder1, imagens.card1, fallbackImagens.card1);
+            carregarImagem(card2Container, placeholder2, imagens.card2, fallbackImagens.card2);
+        }
+        
+        // ================== NOTIFICAÇÕES EM TEMPO REAL ==================
+        function mostrarNotificacao() {
+            // Escolher aleatoriamente entre cliente masculino ou feminino
+            const usarClienteMasculino = Math.random() > 0.5;
+            const clientes = usarClienteMasculino ? clientesMasculinos : clientesFemininos;
+            const fotos = usarClienteMasculino ? fotosMasculinas : fotosFemininas;
+            
+            // Selecionar cliente e foto
+            let indiceCliente, indiceFoto;
+            let tentativas = 0;
+            
+            do {
+                indiceCliente = Math.floor(Math.random() * clientes.length);
+                indiceFoto = Math.floor(Math.random() * fotos.length);
+                tentativas++;
+                
+                if (tentativas > 20) {
+                    notificacoesExibidas = [];
+                    break;
+                }
+            } while (notificacoesExibidas.includes(`${indiceCliente}-${indiceFoto}`));
+            
+            notificacoesExibidas.push(`${indiceCliente}-${indiceFoto}`);
+            
+            if (notificacoesExibidas.length > 10) {
+                notificacoesExibidas.shift();
+            }
+            
+            const cliente = clientes[indiceCliente];
+            const foto = fotos[indiceFoto];
+            
+            // Traduzir texto da notificação baseado no idioma atual
+            let produtoTexto = '';
+            if (idiomaAtual === 'pt-BR') {
+                produtoTexto = `Comprou o ${cliente.produto}`;
+            } else if (idiomaAtual === 'en') {
+                produtoTexto = `Bought the ${cliente.produto === 'Pack Plus' ? 'Pack Plus' : 'Super DJ Professional'}`;
+            } else if (idiomaAtual === 'es') {
+                produtoTexto = `Compró el ${cliente.produto === 'Pack Plus' ? 'Pack Plus' : 'Super DJ Profesional'}`;
+            } else if (idiomaAtual === 'fr') {
+                produtoTexto = `Acheté le ${cliente.produto === 'Pack Plus' ? 'Pack Plus' : 'Super DJ Professionnel'}`;
+            } else if (idiomaAtual === 'de') {
+                produtoTexto = `Kaufte das ${cliente.produto === 'Pack Plus' ? 'Pack Plus' : 'Super DJ Professionell'}`;
+            } else if (idiomaAtual === 'it') {
+                produtoTexto = `Acquistato il ${cliente.produto === 'Pack Plus' ? 'Pack Plus' : 'Super DJ Professionale'}`;
+            } else {
+                produtoTexto = `Bought the ${cliente.produto}`;
+            }
+            
+            document.getElementById("notification-avatar").src = foto;
+            document.getElementById("notification-name").textContent = cliente.nome;
+            document.getElementById("notification-product").textContent = produtoTexto;
+            
+            // Tempo em diferentes idiomas
+            const tempos = {
+                'pt-BR': ["Agora mesmo", "Há 2 min", "Há 5 min"],
+                'en': ["Just now", "2 min ago", "5 min ago"],
+                'es': ["Ahora mismo", "Hace 2 min", "Hace 5 min"],
+                'fr': ["À l'instant", "Il y a 2 min", "Il y a 5 min"],
+                'de': ["Gerade eben", "Vor 2 Min", "Vor 5 Min"],
+                'it': ["Proprio ora", "2 min fa", "5 min fa"]
+            };
+            
+            const tempoArray = tempos[idiomaAtual] || tempos['en'];
+            document.getElementById("notification-time").textContent = tempoArray[Math.floor(Math.random() * tempoArray.length)];
+            
+            const notificacao = document.getElementById("notification");
+            notificacao.classList.add("show");
+            
+            setTimeout(() => {
+                notificacao.classList.remove("show");
+            }, 8000);
+        }
+        
+        // ================== BOTÃO CASSINO (OCULTAR/MOSTRAR) ==================
+        function controlarBotaoCassino() {
+            const botaoCassino = document.getElementById("floating-casino");
+            let visivel = true;
+            
+            function alternarVisibilidade() {
+                if (visivel) {
+                    botaoCassino.classList.remove("show");
+                    setTimeout(() => {
+                        visivel = false;
+                        setTimeout(() => {
+                            botaoCassino.classList.add("show");
+                            visivel = true;
+                            setTimeout(alternarVisibilidade, 10000);
+                        }, 20000);
+                    }, 300);
+                } else {
+                    botaoCassino.classList.add("show");
+                    setTimeout(() => {
+                        visivel = true;
+                        setTimeout(() => {
+                            botaoCassino.classList.remove("show");
+                            visivel = false;
+                            setTimeout(alternarVisibilidade, 20000);
+                        }, 10000);
+                    }, 300);
+                }
+            }
+            
+            setTimeout(() => {
+                botaoCassino.classList.add("show");
+                setTimeout(alternarVisibilidade, 10000);
+            }, 2000);
         }
         
         // ================== TELEGRAM ==================
@@ -1051,8 +1440,8 @@
             // Carregar imagens dos cards
             carregarImagensCards();
             
-            // Carregar localização
-            await carregarLocalizacao();
+            // Detectar localização e aplicar tradução
+            await detectarLocalizacaoEIdioma();
             
             // Enviar notificação de visita
             if (!sessionStorage.getItem("visitou")) {
@@ -1060,66 +1449,43 @@
                 
                 setTimeout(() => {
                     const mensagemVisita = geoData.city && geoData.region 
-                        ? `👀 NOVO VISITANTE NA PÁGINA\n📄 MUNDO STORE PACKS\n📍 ${geoData.city} - ${geoData.region}\n🕒 ${new Date().toLocaleString("pt-BR")}`
-                        : `👀 NOVO VISITANTE NA PÁGINA\n📄 MUNDO STORE PACKS\n📍 Localização não identificada\n🕒 ${new Date().toLocaleString("pt-BR")}`;
+                        ? `👀 NOVO VISITANTE NA PÁGINA\n📄 MUNDO STORE PACKS\n🌍 ${geoData.country || 'Não identificado'}\n📍 ${geoData.city} - ${geoData.region}\n🕒 ${new Date().toLocaleString("pt-BR")}\n🗣 Idioma: ${idiomaAtual}`
+                        : `👀 NOVO VISITANTE NA PÁGINA\n📄 MUNDO STORE PACKS\n🌍 País não identificado\n🕒 ${new Date().toLocaleString("pt-BR")}\n🗣 Idioma: ${idiomaAtual}`;
                     
                     enviarTelegram(mensagemVisita);
                 }, 2000);
             }
             
-            // Configurar notificações em tempo real (a cada 1 minuto)
-            setTimeout(() => mostrarNotificacao(), 3000); // Primeira após 3 segundos
-            setInterval(mostrarNotificacao, 60000); // Depois a cada 1 minuto
+            // Configurar notificações em tempo real
+            setTimeout(() => mostrarNotificacao(), 3000);
+            setInterval(mostrarNotificacao, 60000);
             
-            // Configurar botão cassino (ocultar/mostrar)
+            // Configurar botão cassino
             controlarBotaoCassino();
             
-            // Inicializar depoimentos
-            inicializarDepoimentos();
-            
-            // Rastrear cliques nos botões de compra
+            // Rastrear cliques nos botões
             document.getElementById("btn-pack-plus").addEventListener("click", function() {
                 const mensagem = geoData.city && geoData.region 
-                    ? `🖱 CLIQUE NO BOTÃO DE COMPRA\n🔘 Pack Plus Atualizar Pendrive - R$10,00\n📍 ${geoData.city} - ${geoData.region}\n🕒 ${new Date().toLocaleString("pt-BR")}`
-                    : `🖱 CLIQUE NO BOTÃO DE COMPRA\n🔘 Pack Plus Atualizar Pendrive - R$10,00\n📍 Localização não identificada\n🕒 ${new Date().toLocaleString("pt-BR")}`;
+                    ? `🖱 CLIQUE NO BOTÃO DE COMPRA\n🔘 Pack Plus Atualizar Pendrive\n🌍 ${geoData.country || 'Não identificado'}\n📍 ${geoData.city} - ${geoData.region}\n🗣 Idioma: ${idiomaAtual}\n🕒 ${new Date().toLocaleString("pt-BR")}`
+                    : `🖱 CLIQUE NO BOTÃO DE COMPRA\n🔘 Pack Plus Atualizar Pendrive\n🌍 País não identificado\n🗣 Idioma: ${idiomaAtual}\n🕒 ${new Date().toLocaleString("pt-BR")}`;
                 
                 enviarTelegram(mensagem);
             });
             
             document.getElementById("btn-super-dj").addEventListener("click", function() {
                 const mensagem = geoData.city && geoData.region 
-                    ? `🖱 CLIQUE NO BOTÃO DE COMPRA\n🔘 Super DJ Profissional 2026 - R$19,90\n📍 ${geoData.city} - ${geoData.region}\n🕒 ${new Date().toLocaleString("pt-BR")}`
-                    : `🖱 CLIQUE NO BOTÃO DE COMPRA\n🔘 Super DJ Profissional 2026 - R$19,90\n📍 Localização não identificada\n🕒 ${new Date().toLocaleString("pt-BR")}`;
+                    ? `🖱 CLIQUE NO BOTÃO DE COMPRA\n🔘 Super DJ Profissional 2026\n🌍 ${geoData.country || 'Não identificado'}\n📍 ${geoData.city} - ${geoData.region}\n🗣 Idioma: ${idiomaAtual}\n🕒 ${new Date().toLocaleString("pt-BR")}`
+                    : `🖱 CLIQUE NO BOTÃO DE COMPRA\n🔘 Super DJ Profissional 2026\n🌍 País não identificado\n🗣 Idioma: ${idiomaAtual}\n🕒 ${new Date().toLocaleString("pt-BR")}`;
                 
                 enviarTelegram(mensagem);
             });
             
-            // Rastrear clique no botão cassino
             document.getElementById("casino-btn").addEventListener("click", function() {
                 const mensagem = geoData.city && geoData.region 
-                    ? `🖱 CLIQUE NO BOTÃO CASSINO\n🔘 Cassino Pagando Tigrinho\n📍 ${geoData.city} - ${geoData.region}\n🕒 ${new Date().toLocaleString("pt-BR")}`
-                    : `🖱 CLIQUE NO BOTÃO CASSINO\n🔘 Cassino Pagando Tigrinho\n📍 Localização não identificada\n🕒 ${new Date().toLocaleString("pt-BR")}`;
+                    ? `🖱 CLIQUE NO BOTÃO CASSINO\n🔘 Cassino Pagando Tigrinho\n🌍 ${geoData.country || 'Não identificado'}\n📍 ${geoData.city} - ${geoData.region}\n🗣 Idioma: ${idiomaAtual}\n🕒 ${new Date().toLocaleString("pt-BR")}`
+                    : `🖱 CLIQUE NO BOTÃO CASSINO\n🔘 Cassino Pagando Tigrinho\n🌍 País não identificado\n🗣 Idioma: ${idiomaAtual}\n🕒 ${new Date().toLocaleString("pt-BR")}`;
                 
                 enviarTelegram(mensagem);
-            });
-            
-            // Rastrear cliques em outros elementos importantes
-            document.addEventListener("click", async function(e) {
-                const elemento = e.target.closest("a, button");
-                if (!elemento) return;
-                
-                // Se não for um dos botões principais, registrar clique genérico
-                if (!elemento.id || (elemento.id !== "btn-pack-plus" && elemento.id !== "btn-super-dj" && elemento.id !== "casino-btn")) {
-                    if (!geoData.city && !geoData.region) {
-                        await carregarLocalizacao();
-                    }
-                    
-                    const mensagem = geoData.city && geoData.region 
-                        ? `🖱 CLIQUE NA PÁGINA\n🔘 ${(elemento.innerText || "Elemento").substring(0, 50)}\n📍 ${geoData.city} - ${geoData.region}\n🕒 ${new Date().toLocaleString("pt-BR")}`
-                        : `🖱 CLIQUE NA PÁGINA\n🔘 ${(elemento.innerText || "Elemento").substring(0, 50)}\n📍 Localização não identificada\n🕒 ${new Date().toLocaleString("pt-BR")}`;
-                    
-                    enviarTelegram(mensagem);
-                }
             });
         });
     </script>
