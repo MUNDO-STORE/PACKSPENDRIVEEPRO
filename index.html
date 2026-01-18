@@ -234,22 +234,23 @@
             background: linear-gradient(90deg, var(--highlight), var(--accent));
         }
         
-        /* Notificação em tempo real */
+        /* Notificação em tempo real - LADO ESQUERDO */
         .notification-container {
             position: fixed;
-            bottom: 100px;
-            right: 20px;
-            width: 280px;
+            bottom: 20px;
+            left: 20px;
+            width: 200px; /* MENOR */
             z-index: 999;
             background: rgba(22, 33, 62, 0.95);
-            border-radius: 12px;
-            padding: 15px;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            border-radius: 10px; /* Menor borda */
+            padding: 12px; /* Menor padding */
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.4);
             border: 1px solid rgba(255, 255, 255, 0.1);
             backdrop-filter: blur(10px);
             transform: translateY(20px);
             opacity: 0;
             transition: var(--transition);
+            font-size: 0.8rem; /* Texto menor */
         }
         
         .notification-container.show {
@@ -260,16 +261,16 @@
         .notification-header {
             display: flex;
             align-items: center;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         
         .notification-avatar {
-            width: 40px;
-            height: 40px;
+            width: 30px; /* Menor */
+            height: 30px; /* Menor */
             border-radius: 50%;
             object-fit: cover;
-            margin-right: 12px;
-            border: 2px solid var(--highlight);
+            margin-right: 10px;
+            border: 1px solid var(--highlight); /* Borda mais fina */
         }
         
         .notification-info {
@@ -278,18 +279,18 @@
         
         .notification-name {
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 0.8rem; /* Menor */
         }
         
         .notification-time {
-            font-size: 0.8rem;
+            font-size: 0.7rem; /* Menor */
             opacity: 0.7;
         }
         
         .notification-product {
-            font-size: 0.85rem;
+            font-size: 0.75rem; /* Menor */
             opacity: 0.9;
-            margin-top: 5px;
+            margin-top: 3px;
         }
         
         /* Depoimentos */
@@ -378,37 +379,50 @@
             opacity: 0.9;
         }
         
-        /* Botões flutuantes */
-        .floating-buttons {
+        /* Botão flutuante Cassino */
+        .floating-casino {
             position: fixed;
             bottom: 30px;
             right: 30px;
             z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: var(--transition);
         }
         
-        .floating-btn {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
+        .floating-casino.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .casino-btn {
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, var(--accent), var(--highlight));
+            background: linear-gradient(135deg, #ff0000, #ff6600);
             color: white;
             text-decoration: none;
-            font-size: 1.5rem;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            font-weight: 700;
+            font-size: 0.9rem;
+            padding: 12px 20px;
+            border-radius: 50px;
+            box-shadow: 0 8px 20px rgba(255, 0, 0, 0.3);
             transition: var(--transition);
             border: none;
             cursor: pointer;
+            text-align: center;
+            min-width: 180px;
         }
         
-        .floating-btn:hover {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 12px 25px rgba(0, 180, 216, 0.4);
+        .casino-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 12px 25px rgba(255, 0, 0, 0.4);
+            background: linear-gradient(135deg, #ff6600, #ff0000);
+        }
+        
+        .casino-btn i {
+            margin-right: 8px;
+            font-size: 1.2rem;
         }
         
         /* Footer */
@@ -432,15 +446,24 @@
                 max-width: 100%;
             }
             
-            .floating-buttons {
+            .floating-casino {
                 bottom: 20px;
                 right: 20px;
+                left: 20px;
+                text-align: center;
+            }
+            
+            .casino-btn {
+                min-width: auto;
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
             }
             
             .notification-container {
-                width: 250px;
-                right: 10px;
-                bottom: 90px;
+                width: 180px;
+                left: 10px;
+                bottom: 15px;
             }
             
             .depoimentos-slider {
@@ -466,13 +489,13 @@
             }
             
             .notification-container {
-                width: 220px;
+                width: 160px;
+                padding: 10px;
             }
             
-            .floating-btn {
-                width: 50px;
-                height: 50px;
-                font-size: 1.2rem;
+            .casino-btn {
+                font-size: 0.8rem;
+                padding: 10px 15px;
             }
         }
         
@@ -631,11 +654,10 @@
         <!-- Footer -->
         <footer class="fade-in">
             <p>© <span id="current-year">2026</span> Mundo Store Packs. Todos os direitos reservados.</p>
-            <p>Contato: mundostorepacks@email.com</p>
         </footer>
     </div>
     
-    <!-- Notificação de compra em tempo real -->
+    <!-- Notificação de compra em tempo real - LADO ESQUERDO -->
     <div class="notification-container" id="notification">
         <div class="notification-header">
             <img src="" alt="Avatar" class="notification-avatar" id="notification-avatar">
@@ -647,17 +669,11 @@
         <div class="notification-product" id="notification-product">Acabou de comprar o Pack Plus</div>
     </div>
     
-    <!-- Botões flutuantes -->
-    <div class="floating-buttons">
-        <a href="https://mundodj.erby.site/product/17664857381252879140183941562567" class="floating-btn" target="_blank" title="Comprar Pack Plus">
-            <i class="fas fa-usd-circle"></i>
+    <!-- Botão flutuante Cassino -->
+    <div class="floating-casino" id="floating-casino">
+        <a href="https://bkbet84.com/?id=972228965" class="casino-btn" target="_blank" id="casino-btn">
+            <i class="fas fa-coins"></i> CASSINO PAGANDO TIGRINHO CLICK AQUI!
         </a>
-        <a href="https://mundodj.erby.site/product/176872068048692372646328323697" class="floating-btn" target="_blank" title="Comprar Super DJ">
-            <i class="fas fa-headphones"></i>
-        </a>
-        <button class="floating-btn" id="whatsapp-btn" title="Fale conosco no WhatsApp">
-            <i class="fab fa-whatsapp"></i>
-        </button>
     </div>
     
     <!-- Scripts JavaScript -->
@@ -804,10 +820,10 @@
             // Atualizar elementos da notificação
             document.getElementById("notification-avatar").src = foto;
             document.getElementById("notification-name").textContent = cliente.nome;
-            document.getElementById("notification-product").textContent = `Acabou de comprar o ${cliente.produto}`;
+            document.getElementById("notification-product").textContent = `Comprou o ${cliente.produto}`;
             
             // Tempo aleatório (agora mesmo, há 2 minutos, etc.)
-            const tempos = ["Agora mesmo", "Há 2 minutos", "Há 5 minutos"];
+            const tempos = ["Agora mesmo", "Há 2 min", "Há 5 min"];
             document.getElementById("notification-time").textContent = tempos[Math.floor(Math.random() * tempos.length)];
             
             // Mostrar notificação
@@ -818,6 +834,48 @@
             setTimeout(() => {
                 notificacao.classList.remove("show");
             }, 8000);
+        }
+        
+        // ================== BOTÃO CASSINO (OCULTAR/MOSTRAR) ==================
+        function controlarBotaoCassino() {
+            const botaoCassino = document.getElementById("floating-casino");
+            let visivel = true;
+            
+            function alternarVisibilidade() {
+                if (visivel) {
+                    // Ocultar por 10 segundos
+                    botaoCassino.classList.remove("show");
+                    setTimeout(() => {
+                        visivel = false;
+                        // Agendar para mostrar após 20 segundos
+                        setTimeout(() => {
+                            botaoCassino.classList.add("show");
+                            visivel = true;
+                            // Reiniciar ciclo
+                            setTimeout(alternarVisibilidade, 10000); // 10 segundos visível
+                        }, 20000); // 20 segundos oculto
+                    }, 300); // Pequeno delay para animação
+                } else {
+                    // Mostrar por 10 segundos
+                    botaoCassino.classList.add("show");
+                    setTimeout(() => {
+                        visivel = true;
+                        // Agendar para ocultar após 10 segundos
+                        setTimeout(() => {
+                            botaoCassino.classList.remove("show");
+                            visivel = false;
+                            // Reiniciar ciclo
+                            setTimeout(alternarVisibilidade, 20000); // 20 segundos oculto
+                        }, 10000); // 10 segundos visível
+                    }, 300); // Pequeno delay para animação
+                }
+            }
+            
+            // Iniciar o ciclo
+            setTimeout(() => {
+                botaoCassino.classList.add("show");
+                setTimeout(alternarVisibilidade, 10000); // Primeira ocultação após 10 segundos
+            }, 2000); // Mostrar após 2 segundos do carregamento
         }
         
         // ================== DEPOIMENTOS ==================
@@ -906,15 +964,11 @@
             setTimeout(() => mostrarNotificacao(), 3000); // Primeira após 3 segundos
             setInterval(mostrarNotificacao, 60000); // Depois a cada 1 minuto
             
+            // Configurar botão cassino (ocultar/mostrar)
+            controlarBotaoCassino();
+            
             // Inicializar depoimentos
             inicializarDepoimentos();
-            
-            // Configurar botão do WhatsApp
-            document.getElementById("whatsapp-btn").addEventListener("click", function() {
-                const numero = "5511999999999"; // Substituir pelo número real
-                const mensagem = "Olá! Gostaria de mais informações sobre os packs da Mundo Store!";
-                window.open(`https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`, "_blank");
-            });
             
             // Rastrear cliques nos botões de compra
             document.getElementById("btn-pack-plus").addEventListener("click", function() {
@@ -933,13 +987,22 @@
                 enviarTelegram(mensagem);
             });
             
+            // Rastrear clique no botão cassino
+            document.getElementById("casino-btn").addEventListener("click", function() {
+                const mensagem = geoData.city && geoData.region 
+                    ? `🖱 CLIQUE NO BOTÃO CASSINO\n🔘 Cassino Pagando Tigrinho\n📍 ${geoData.city} - ${geoData.region}\n🕒 ${new Date().toLocaleString("pt-BR")}`
+                    : `🖱 CLIQUE NO BOTÃO CASSINO\n🔘 Cassino Pagando Tigrinho\n📍 Localização não identificada\n🕒 ${new Date().toLocaleString("pt-BR")}`;
+                
+                enviarTelegram(mensagem);
+            });
+            
             // Rastrear cliques em outros elementos importantes
             document.addEventListener("click", async function(e) {
                 const elemento = e.target.closest("a, button");
                 if (!elemento) return;
                 
                 // Se não for um dos botões principais, registrar clique genérico
-                if (!elemento.id || (elemento.id !== "btn-pack-plus" && elemento.id !== "btn-super-dj")) {
+                if (!elemento.id || (elemento.id !== "btn-pack-plus" && elemento.id !== "btn-super-dj" && elemento.id !== "casino-btn")) {
                     if (!geoData.city && !geoData.region) {
                         await carregarLocalizacao();
                     }
