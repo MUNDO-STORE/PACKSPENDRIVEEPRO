@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mundo Store Packs | Atualize seu Pendrive DJ</title>
+    <meta name="description" content="Packs completos para DJs atualizarem seus pendrives com milhares de músicas, efeitos sonoros e softwares profissionais.">
+    
+    <!-- Pixel do Facebook -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', '25652670291043537');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=25652670291043537&ev=PageView&noscript=1"
+    /></noscript>
+    
+    <!-- Estilos CSS -->
+    <style>
+        /* Reset e configurações gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #0f4c75;
+            --highlight: #00b4d8;
+            --text: #e6e6e6;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --border-radius: 12px;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            --transition: all 0.3s ease;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--text);
+            min-height: 100vh;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        header {
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+        
+        .logo {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, var(--highlight), #00d4ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: 1px;
+        }
+        
+        .slogan {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+        
+        .localizacao {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Cards de produtos */
+        .cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin: 40px 0 80px;
+        }
+        
+        .card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+            backdrop-filter: blur(10px);
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+            border-color: rgba(0, 180, 216, 0.3);
+        }
+        
+        /* Efeito de borda animada */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #00b4d8, #0077b6, #03045e);
+            z-index: -1;
+            border-radius: calc(var(--border-radius) + 2px);
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .card:hover::before {
+            opacity: 0.7;
+            animation: borderGlow 3s linear infinite;
+        }
+        
+        @keyframes borderGlow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 0.9; }
+        }
+        
+        .card-header {
+            padding: 25px;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .card-title {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            color: white;
+        }
+        
+        .card-price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--highlight);
+            margin-bottom: 5px;
+        }
+        
+        .card-price span {
+            font-size: 1rem;
+            opacity: 0.8;
+        }
+        
+        .card-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+            background-color: #2a2a4a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+        
+        .card-body {
+            padding: 25px;
+        }
+        
+        .card-features {
+            list-style-type: none;
+            margin-bottom: 25px;
+        }
+        
+        .card-features li {
+            padding: 8px 0;
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .card-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--highlight);
+            font-weight: bold;
+        }
+        
+        .card-features li.sem-atualizacoes::before {
+            content: '⚠';
+            color: #ffa500;
+        }
+        
+        .btn-comprar {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            text-align: center;
+            background: linear-gradient(90deg, var(--accent), var(--highlight));
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            letter-spacing: 0.5px;
+        }
+        
+        .btn-comprar:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 180, 216, 0.3);
+            background: linear-gradient(90deg, var(--highlight), var(--accent));
+        }
+        
+        /* Notificação em tempo real */
+        .notification-container {
+            position: fixed;
+            bottom: 100px;
+            right: 20px;
+            width: 280px;
+            z-index: 999;
+            background: rgba(22, 33, 62, 0.95);
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            transform: translateY(20px);
+            opacity: 0;
+            transition: var(--transition);
+        }
+        
+        .notification-container.show {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .notification-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        
+        .notification-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 12px;
+            border: 2px solid var(--highlight);
+        }
+        
+        .notification-info {
+            flex-grow: 1;
+        }
+        
+        .notification-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        
+        .notification-time {
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+        
+        .notification-product {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            margin-top: 5px;
+        }
+        
+        /* Depoimentos */
+        .depoimentos-container {
+            max-width: 800px;
+            margin: 0 auto 80px;
+            text-align: center;
+        }
+        
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 40px;
+            color: white;
+            text-align: center;
+        }
+        
+        .depoimentos-slider {
+            position: relative;
+            height: 220px;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            background: rgba(255, 255, 255, 0.03);
+            padding: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .depoimento {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        
+        .depoimento.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .depoimento-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+        }
+        
+        .depoimento-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .depoimento-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+            border: 2px solid var(--highlight);
+        }
+        
+        .depoimento-info {
+            text-align: left;
+        }
+        
+        .depoimento-name {
+            font-weight: 600;
+        }
+        
+        .depoimento-location {
+            font-size: 0.85rem;
+            opacity: 0.8;
+        }
+        
+        .depoimento-social {
+            display: flex;
+            align-items: center;
+            margin-top: 5px;
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+        
+        /* Botões flutuantes */
+        .floating-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .floating-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--accent), var(--highlight));
+            color: white;
+            text-decoration: none;
+            font-size: 1.5rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+        
+        .floating-btn:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 12px 25px rgba(0, 180, 216, 0.4);
+        }
+        
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 60px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .cards-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .card {
+                max-width: 100%;
+            }
+            
+            .floating-buttons {
+                bottom: 20px;
+                right: 20px;
+            }
+            
+            .notification-container {
+                width: 250px;
+                right: 10px;
+                bottom: 90px;
+            }
+            
+            .depoimentos-slider {
+                height: 260px;
+            }
+            
+            .logo {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            
+            .card-header, .card-body {
+                padding: 20px;
+            }
+            
+            .card-title {
+                font-size: 1.5rem;
+            }
+            
+            .notification-container {
+                width: 220px;
+            }
+            
+            .floating-btn {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+        }
+        
+        /* Animações de entrada */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .fade-in {
+            opacity: 0;
+            animation: fadeInUp 0.8s ease forwards;
+        }
+        
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+        
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+        
+        /* Scrollbar personalizada */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--primary);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--accent);
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--highlight);
+        }
+        
+        /* Placeholder para imagens */
+        .image-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #2a2a4a, #1a1a2e);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #aaa;
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .image-placeholder i {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: #555;
+        }
+    </style>
+    
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1 class="logo fade-in">MUNDO STORE PACKS</h1>
+            <p class="slogan fade-in delay-1">Atualize seu pendrive DJ com milhares de músicas, efeitos sonoros e softwares profissionais</p>
+            <div class="localizacao fade-in delay-2" id="localizacao-usuario">
+                📍 Detectando sua localização...
+            </div>
+        </header>
+        
+        <!-- Cards de Produtos -->
+        <section class="cards-container">
+            <!-- Card 1: Pack Plus -->
+            <div class="card fade-in">
+                <div class="card-header">
+                    <h2 class="card-title">PACK PLUS ATUALIZAR PENDRIVE</h2>
+                    <div class="card-price">R$10<span>,00</span></div>
+                </div>
+                <div class="card-image" id="card1-image">
+                    <div class="image-placeholder">
+                        <i class="fas fa-usb-drive"></i>
+                        <div>PACK PLUS</div>
+                        <div>Atualizar Pendrive</div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <ul class="card-features">
+                        <li>Mais de 25 mil músicas MP3</li>
+                        <li>+30 ritmos atualizados</li>
+                        <li>Sem vinhetas</li>
+                        <li>Download imediato (Hospedado Media Fire e Google Drive)</li>
+                        <li>Links enviados por email após pagamento</li>
+                        <li>+10 MIL MÚSICAS EXTRAS!</li>
+                        <li class="sem-atualizacoes">SEM ATUALIZAÇÕES!</li>
+                    </ul>
+                    <a href="https://mundodj.erby.site/product/17664857381252879140183941562567" class="btn-comprar" target="_blank" id="btn-pack-plus">
+                        <i class="fas fa-shopping-cart"></i> CLIQUE AQUI PARA COMPRAR R$ 10,00
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Card 2: Super DJ Profissional 2026 -->
+            <div class="card fade-in delay-1">
+                <div class="card-header">
+                    <h2 class="card-title">SUPER DJ PROFISSIONAL 2026</h2>
+                    <div class="card-price">R$19<span>,90</span></div>
+                </div>
+                <div class="card-image" id="card2-image">
+                    <div class="image-placeholder">
+                        <i class="fas fa-headphones"></i>
+                        <div>SUPER DJ</div>
+                        <div>Profissional 2026</div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <ul class="card-features">
+                        <li>+7 Terabytes de músicas</li>
+                        <li>+2 Terabytes de efeitos sonoros</li>
+                        <li>Repertórios atualizados</li>
+                        <li>Videoclipes e softwares para DJ</li>
+                        <li>Packs para academia</li>
+                        <li>Pack Gospel Profissional</li>
+                        <li>Pack DJ Retro (Discotecas, Flashback, Eurodance, etc)</li>
+                        <li>Pack Funk (Light, Megafunk, Eletrofunk, etc)</li>
+                        <li>Pack para festas (Casamento, 15 anos, Formaturas, etc)</li>
+                        <li>✅ 100% HOSPEDADO NO TELEGRAM!</li>
+                        <li>✅ ATUALIZAÇÕES (TUDO QUE CONSEGUIMOS JOGAMOS NOS GRUPO VIP TELEGRAM)!</li>
+                    </ul>
+                    <a href="https://mundodj.erby.site/product/176872068048692372646328323697" class="btn-comprar" target="_blank" id="btn-super-dj">
+                        <i class="fas fa-shopping-cart"></i> CLIQUE AQUI PARA COMPRAR R$ 19,90
+                    </a>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Depoimentos -->
+        <section class="depoimentos-container fade-in delay-2">
+            <h2 class="section-title">DEPOIMENTOS DE CLIENTES</h2>
+            <div class="depoimentos-slider">
+                <!-- Depoimentos serão inseridos via JavaScript -->
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer class="fade-in">
+            <p>© <span id="current-year">2026</span> Mundo Store Packs. Todos os direitos reservados.</p>
+            <p>Contato: mundostorepacks@email.com</p>
+        </footer>
+    </div>
+    
+    <!-- Notificação de compra em tempo real -->
+    <div class="notification-container" id="notification">
+        <div class="notification-header">
+            <img src="" alt="Avatar" class="notification-avatar" id="notification-avatar">
+            <div class="notification-info">
+                <div class="notification-name" id="notification-name">Nome do cliente</div>
+                <div class="notification-time" id="notification-time">Agora mesmo</div>
+            </div>
+        </div>
+        <div class="notification-product" id="notification-product">Acabou de comprar o Pack Plus</div>
+    </div>
+    
+    <!-- Botões flutuantes -->
+    <div class="floating-buttons">
+        <a href="https://mundodj.erby.site/product/17664857381252879140183941562567" class="floating-btn" target="_blank" title="Comprar Pack Plus">
+            <i class="fas fa-usd-circle"></i>
+        </a>
+        <a href="https://mundodj.erby.site/product/176872068048692372646328323697" class="floating-btn" target="_blank" title="Comprar Super DJ">
+            <i class="fas fa-headphones"></i>
+        </a>
+        <button class="floating-btn" id="whatsapp-btn" title="Fale conosco no WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </button>
+    </div>
+    
+    <!-- Scripts JavaScript -->
+    <script>
+        // ================== CONFIGURAÇÕES ==================
+        const TELEGRAM_BOT_TOKEN = "8560103571:AAE8sFKUg-gZWwWA3W8QDOEKUMhcrJL6BrI";
+        const TELEGRAM_CHAT_ID = "5549483317";
+        
+        // ================== ANO ATUAL AUTOMÁTICO ==================
+        document.getElementById('current-year').textContent = new Date().getFullYear();
+        
+        // ================== DADOS PARA NOTIFICAÇÕES ==================
+        const clientesMasculinos = [
+            { nome: "Carlos Silva", estado: "SP", rede: "@carlossilva", produto: "Pack Plus" },
+            { nome: "Roberto Santos", estado: "RJ", rede: "@robertosantos", produto: "Super DJ Profissional 2026" },
+            { nome: "Fernando Costa", estado: "MG", rede: "@fernandocosta", produto: "Pack Plus" },
+            { nome: "Lucas Almeida", estado: "PR", rede: "@lucasalmeida", produto: "Super DJ Profissional 2026" },
+            { nome: "Marcos Oliveira", estado: "RS", rede: "@marcosoliveira", produto: "Pack Plus" },
+            { nome: "Rafael Souza", estado: "SC", rede: "@rafaelsouza", produto: "Super DJ Profissional 2026" },
+            { nome: "João Pereira", estado: "BA", rede: "@joaopereira", produto: "Pack Plus" }
+        ];
+        
+        const clientesFemininos = [
+            { nome: "Ana Costa", estado: "SP", rede: "@anacosta", produto: "Super DJ Profissional 2026" },
+            { nome: "Juliana Lima", estado: "RJ", rede: "@julianalima", produto: "Pack Plus" },
+            { nome: "Patrícia Santos", estado: "MG", rede: "@patriciasantos", produto: "Super DJ Profissional 2026" },
+            { nome: "Camila Ferreira", estado: "PR", rede: "@camilaferreira", produto: "Pack Plus" },
+            { nome: "Amanda Rocha", estado: "RS", rede: "@amandarocha", produto: "Super DJ Profissional 2026" },
+            { nome: "Beatriz Alves", estado: "SC", rede: "@beatrizalves", produto: "Pack Plus" },
+            { nome: "Maria Oliveira", estado: "BA", rede: "@mariaoliveira", produto: "Super DJ Profissional 2026" }
+        ];
+        
+        const fotosMasculinas = [
+            "https://randomuser.me/api/portraits/men/1.jpg",
+            "https://randomuser.me/api/portraits/men/2.jpg",
+            "https://randomuser.me/api/portraits/men/3.jpg",
+            "https://randomuser.me/api/portraits/men/4.jpg",
+            "https://randomuser.me/api/portraits/men/5.jpg",
+            "https://randomuser.me/api/portraits/men/6.jpg",
+            "https://randomuser.me/api/portraits/men/7.jpg"
+        ];
+        
+        const fotosFemininas = [
+            "https://randomuser.me/api/portraits/women/1.jpg",
+            "https://randomuser.me/api/portraits/women/2.jpg",
+            "https://randomuser.me/api/portraits/women/3.jpg",
+            "https://randomuser.me/api/portraits/women/4.jpg",
+            "https://randomuser.me/api/portraits/women/5.jpg",
+            "https://randomuser.me/api/portraits/women/6.jpg",
+            "https://randomuser.me/api/portraits/women/7.jpg"
+        ];
+        
+        // Depoimentos
+        const depoimentos = [
+            { nome: "Carlos Silva", estado: "São Paulo", rede: "Facebook", texto: "Comprei o Pack Plus e superou minhas expectativas! As músicas são atualizadas e a qualidade é excelente. Recomendo!" },
+            { nome: "Ana Costa", estado: "Rio de Janeiro", rede: "Instagram", texto: "O Super DJ Profissional mudou meu trabalho! Tenho acesso a milhares de músicas e efeitos que impressionam meus clientes." },
+            { nome: "Roberto Santos", estado: "Minas Gerais", rede: "Facebook", texto: "Atualizei meu pendrive em minutos e já estou usando nas festas. O download foi rápido e as músicas são perfeitas!" },
+            { nome: "Juliana Lima", estado: "Paraná", rede: "Instagram", texto: "Como DJ iniciante, esses packs foram essenciais para montar meu repertório. O valor é irrisório pelo que se recebe!" },
+            { nome: "Fernando Costa", estado: "Rio Grande do Sul", rede: "Facebook", texto: "Já comprei os dois packs e não me arrependo. Sempre que preciso de músicas novas, sei que posso contar com a Mundo Store!" }
+        ];
+        
+        // ================== VARIÁVEIS GLOBAIS ==================
+        let geoData = { city: null, region: null };
+        let notificacoesExibidas = [];
+        let depoimentosExibidos = [];
+        
+        // ================== FUNÇÕES DE LOCALIZAÇÃO ==================
+        async function carregarLocalizacao() {
+            try {
+                const response = await fetch("https://ipapi.co/json/");
+                const data = await response.json();
+                if (data.city && data.region) {
+                    geoData.city = data.city;
+                    geoData.region = data.region;
+                    atualizarLocalizacaoNaPagina();
+                    return true;
+                }
+            } catch (error) {
+                console.log("Erro ao carregar localização do ipapi:", error);
+            }
+            
+            try {
+                const response2 = await fetch("https://ipwho.is/");
+                const data2 = await response2.json();
+                if (data2.city && data2.region) {
+                    geoData.city = data2.city;
+                    geoData.region = data2.region;
+                    atualizarLocalizacaoNaPagina();
+                    return true;
+                }
+            } catch (error) {
+                console.log("Erro ao carregar localização do ipwho.is:", error);
+            }
+            
+            // Se não conseguir detectar localização, oculta o elemento
+            const elemento = document.getElementById("localizacao-usuario");
+            if (elemento) {
+                elemento.style.display = "none";
+            }
+            return false;
+        }
+        
+        function atualizarLocalizacaoNaPagina() {
+            const elemento = document.getElementById("localizacao-usuario");
+            if (elemento && geoData.city && geoData.region) {
+                elemento.innerText = `📍 ${geoData.city} - ${geoData.region}`;
+                elemento.style.display = "inline-block";
+            }
+        }
+        
+        // ================== NOTIFICAÇÕES EM TEMPO REAL ==================
+        function mostrarNotificacao() {
+            // Escolher aleatoriamente entre cliente masculino ou feminino
+            const usarClienteMasculino = Math.random() > 0.5;
+            const clientes = usarClienteMasculino ? clientesMasculinos : clientesFemininos;
+            const fotos = usarClienteMasculino ? fotosMasculinas : fotosFemininas;
+            
+            // Selecionar cliente e foto que ainda não foram usados
+            let indiceCliente, indiceFoto;
+            let tentativas = 0;
+            
+            do {
+                indiceCliente = Math.floor(Math.random() * clientes.length);
+                indiceFoto = Math.floor(Math.random() * fotos.length);
+                tentativas++;
+                
+                // Se tentou muitas vezes, reseta a lista para evitar loop infinito
+                if (tentativas > 20) {
+                    notificacoesExibidas = [];
+                    break;
+                }
+            } while (notificacoesExibidas.includes(`${indiceCliente}-${indiceFoto}`));
+            
+            notificacoesExibidas.push(`${indiceCliente}-${indiceFoto}`);
+            
+            // Se a lista ficar muito grande, remove os mais antigos
+            if (notificacoesExibidas.length > 10) {
+                notificacoesExibidas.shift();
+            }
+            
+            const cliente = clientes[indiceCliente];
+            const foto = fotos[indiceFoto];
+            
+            // Atualizar elementos da notificação
+            document.getElementById("notification-avatar").src = foto;
+            document.getElementById("notification-name").textContent = cliente.nome;
+            document.getElementById("notification-product").textContent = `Acabou de comprar o ${cliente.produto}`;
+            
+            // Tempo aleatório (agora mesmo, há 2 minutos, etc.)
+            const tempos = ["Agora mesmo", "Há 2 minutos", "Há 5 minutos"];
+            document.getElementById("notification-time").textContent = tempos[Math.floor(Math.random() * tempos.length)];
+            
+            // Mostrar notificação
+            const notificacao = document.getElementById("notification");
+            notificacao.classList.add("show");
+            
+            // Ocultar após 8 segundos
+            setTimeout(() => {
+                notificacao.classList.remove("show");
+            }, 8000);
+        }
+        
+        // ================== DEPOIMENTOS ==================
+        function inicializarDepoimentos() {
+            const container = document.querySelector(".depoimentos-slider");
+            
+            // Limpar container
+            container.innerHTML = "";
+            
+            // Selecionar 5 depoimentos aleatórios
+            const depoimentosSelecionados = [];
+            while (depoimentosSelecionados.length < 5 && depoimentosSelecionados.length < depoimentos.length) {
+                const indice = Math.floor(Math.random() * depoimentos.length);
+                if (!depoimentosSelecionados.includes(indice)) {
+                    depoimentosSelecionados.push(indice);
+                }
+            }
+            
+            // Criar elementos dos depoimentos
+            depoimentosSelecionados.forEach((indice, i) => {
+                const depoimento = depoimentos[indice];
+                const elemento = document.createElement("div");
+                elemento.className = `depoimento ${i === 0 ? 'active' : ''}`;
+                
+                // Escolher foto aleatória baseada no gênero do nome
+                const foto = depoimento.nome.includes("a") && !depoimento.nome.includes("Carlos") 
+                    ? fotosFemininas[Math.floor(Math.random() * fotosFemininas.length)]
+                    : fotosMasculinas[Math.floor(Math.random() * fotosMasculinas.length)];
+                
+                elemento.innerHTML = `
+                    <p class="depoimento-text">"${depoimento.texto}"</p>
+                    <div class="depoimento-author">
+                        <img src="${foto}" alt="${depoimento.nome}" class="depoimento-avatar">
+                        <div class="depoimento-info">
+                            <div class="depoimento-name">${depoimento.nome}</div>
+                            <div class="depoimento-location">${depoimento.estado}</div>
+                            <div class="depoimento-social">
+                                <i class="fab fa-${depoimento.rede.toLowerCase()}"></i> ${depoimento.rede}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                container.appendChild(elemento);
+            });
+            
+            // Rotacionar depoimentos a cada 40 segundos
+            let indiceAtual = 0;
+            setInterval(() => {
+                const todosDepoimentos = document.querySelectorAll(".depoimento");
+                todosDepoimentos.forEach(dep => dep.classList.remove("active"));
+                
+                indiceAtual = (indiceAtual + 1) % todosDepoimentos.length;
+                todosDepoimentos[indiceAtual].classList.add("active");
+            }, 40000);
+        }
+        
+        // ================== TELEGRAM ==================
+        function enviarTelegram(mensagem) {
+            fetch(
+                `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage` +
+                `?chat_id=${TELEGRAM_CHAT_ID}` +
+                `&text=${encodeURIComponent(mensagem)}`
+            ).catch(error => console.error("Erro ao enviar para Telegram:", error));
+        }
+        
+        // ================== INICIALIZAÇÃO ==================
+        document.addEventListener("DOMContentLoaded", async function() {
+            // Carregar localização
+            await carregarLocalizacao();
+            
+            // Enviar notificação de visita
+            if (!sessionStorage.getItem("visitou")) {
+                sessionStorage.setItem("visitou", "1");
+                
+                setTimeout(() => {
+                    const mensagemVisita = geoData.city && geoData.region 
+                        ? `👀 NOVO VISITANTE NA PÁGINA\n📄 MUNDO STORE PACKS\n📍 ${geoData.city} - ${geoData.region}\n🕒 ${new Date().toLocaleString("pt-BR")}`
+                        : `👀 NOVO VISITANTE NA PÁGINA\n📄 MUNDO STORE PACKS\n📍 Localização não identificada\n🕒 ${new Date().toLocaleString("pt-BR")}`;
+                    
+                    enviarTelegram(mensagemVisita);
+                }, 2000);
+            }
+            
+            // Configurar notificações em tempo real (a cada 1 minuto)
+            setTimeout(() => mostrarNotificacao(), 3000); // Primeira após 3 segundos
+            setInterval(mostrarNotificacao, 60000); // Depois a cada 1 minuto
+            
+            // Inicializar depoimentos
+            inicializarDepoimentos();
+            
+            // Configurar botão do WhatsApp
+            document.getElementById("whatsapp-btn").addEventListener("click", function() {
+                const numero = "5511999999999"; // Substituir pelo número real
+                const mensagem = "Olá! Gostaria de mais informações sobre os packs da Mundo Store!";
+                window.open(`https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`, "_blank");
+            });
+            
+            // Rastrear cliques nos botões de compra
+            document.getElementById("btn-pack-plus").addEventListener("click", function() {
+                const mensagem = geoData.city && geoData.region 
+                    ? `🖱 CLIQUE NO BOTÃO DE COMPRA\n🔘 Pack Plus Atualizar Pendrive - R$10,00\n📍 ${geoData.city} - ${geoData.region}\n🕒 ${new Date().toLocaleString("pt-BR")}`
+                    : `🖱 CLIQUE NO BOTÃO DE COMPRA\n🔘 Pack Plus Atualizar Pendrive - R$10,00\n📍 Localização não identificada\n🕒 ${new Date().toLocaleString("pt-BR")}`;
+                
+                enviarTelegram(mensagem);
+            });
+            
+            document.getElementById("btn-super-dj").addEventListener("click", function() {
+                const mensagem = geoData.city && geoData.region 
+                    ? `🖱 CLIQUE NO BOTÃO DE COMPRA\n🔘 Super DJ Profissional 2026 - R$19,90\n📍 ${geoData.city} - ${geoData.region}\n🕒 ${new Date().toLocaleString("pt-BR")}`
+                    : `🖱 CLIQUE NO BOTÃO DE COMPRA\n🔘 Super DJ Profissional 2026 - R$19,90\n📍 Localização não identificada\n🕒 ${new Date().toLocaleString("pt-BR")}`;
+                
+                enviarTelegram(mensagem);
+            });
+            
+            // Rastrear cliques em outros elementos importantes
+            document.addEventListener("click", async function(e) {
+                const elemento = e.target.closest("a, button");
+                if (!elemento) return;
+                
+                // Se não for um dos botões principais, registrar clique genérico
+                if (!elemento.id || (elemento.id !== "btn-pack-plus" && elemento.id !== "btn-super-dj")) {
+                    if (!geoData.city && !geoData.region) {
+                        await carregarLocalizacao();
+                    }
+                    
+                    const mensagem = geoData.city && geoData.region 
+                        ? `🖱 CLIQUE NA PÁGINA\n🔘 ${(elemento.innerText || "Elemento").substring(0, 50)}\n📍 ${geoData.city} - ${geoData.region}\n🕒 ${new Date().toLocaleString("pt-BR")}`
+                        : `🖱 CLIQUE NA PÁGINA\n🔘 ${(elemento.innerText || "Elemento").substring(0, 50)}\n📍 Localização não identificada\n🕒 ${new Date().toLocaleString("pt-BR")}`;
+                    
+                    enviarTelegram(mensagem);
+                }
+            });
+            
+            // Adicionar imagens reais dos cards se disponíveis
+            setTimeout(() => {
+                const card1Image = document.getElementById('card1-image');
+                const card2Image = document.getElementById('card2-image');
+                
+                // Tentar carregar as imagens especificadas
+                const img1 = new Image();
+                img1.src = 'pen.jpg';
+                img1.onload = function() {
+                    card1Image.innerHTML = '';
+                    card1Image.appendChild(img1);
+                    img1.style.width = '100%';
+                    img1.style.height = '100%';
+                    img1.style.objectFit = 'cover';
+                };
+                
+                const img2 = new Image();
+                img2.src = '15.jpg';
+                img2.onload = function() {
+                    card2Image.innerHTML = '';
+                    card2Image.appendChild(img2);
+                    img2.style.width = '100%';
+                    img2.style.height = '100%';
+                    img2.style.objectFit = 'cover';
+                };
+            }, 100);
+        });
+    </script>
+</body>
+</html>
